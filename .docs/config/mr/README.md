@@ -1,7 +1,7 @@
 <div align="center" style="text-align: center;">
   <!-- Project Title -->
   <a href="https://framagit.org.rdeville.public/my_dotfiles/myrepo">
-    <img src="docs/assets/img/myrepo_logo.svg" width="250px">
+    <img src="docs/assets/img/myrepo_logo.svg" width="100px">
     <h1>MyRepo Template</h1>
   </a>
 
