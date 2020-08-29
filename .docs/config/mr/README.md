@@ -15,10 +15,10 @@
 
 --------------------------------------------------------------------------------
 
-<center>
+<div align="center" style="text-align: center;">
 <b>Scaffolding repo to setup <a
 href="https://myrepos.branchable.com/">myrepos</a> using user configuration.</b>
-</center>
+</div>
 
 --------------------------------------------------------------------------------
 
