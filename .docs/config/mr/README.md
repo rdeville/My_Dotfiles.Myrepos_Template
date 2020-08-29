@@ -22,15 +22,14 @@ href="https://myrepos.branchable.com/">myrepos</a> using user configuration.</b>
 
 --------------------------------------------------------------------------------
 
-<b>Main repo on [ Framagit][myrepo_repo_url] is just here to propose a
+Main repo on [ Framagit][myrepo_repo_url] is just here to propose a
 scaffolding repo to setup [myrepos][myrepos].Its aims is not to store any
 deployment configuration.
 <br>
 <br>
 <div align="center" style="text-align: center;">
-<i>PLEASE FORK THIS REPO TO STORE YOUR OWN CONFIGURATION</i>
+<b><i>PLEASE FORK THIS REPO TO STORE YOUR OWN CONFIGURATION</i></b>
 </div>
-</b>
 
 --------------------------------------------------------------------------------
 
