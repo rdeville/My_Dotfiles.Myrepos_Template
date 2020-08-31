@@ -1,0 +1,82 @@
+---
+type: map
+mapping:
+  repos:
+    required: true
+    type: map
+    mapping:
+      vcsh:
+        type: seq
+        required: false
+        sequence:
+          - type: map
+            mapping:
+              name:
+                type: str
+                required: true
+              desc:
+                type: str
+                required: true
+              remote:
+                type: map
+                required: true
+                mapping:
+                  https:
+                    type: str
+                    required: false
+                  ssh:
+                    type: str
+                    required: false
+              command:
+                type: map
+                required: false
+                mapping:
+                  pre_clone:
+                    type: seq
+                    sequence:
+                      - type: str
+                        required: true
+                  post_clone:
+                    type: seq
+                    sequence:
+                      - type: str
+                        required: true
+      git:
+        type: seq
+        required: false
+        sequence:
+          - type: map
+            mapping:
+              name:
+                type: str
+                required: true
+              desc:
+                type: str
+                required: true
+              path:
+                type: str
+                required: true
+              remote:
+                type: map
+                required: true
+                mapping:
+                  https:
+                    type: str
+                    required: false
+                  ssh:
+                    type: str
+                    required: false
+              command:
+                type: map
+                required: false
+                mapping:
+                  pre_clone:
+                    type: seq
+                    sequence:
+                      - type: str
+                        required: true
+                  post_clone:
+                    type: seq
+                    sequence:
+                      - type: str
+                        required: true

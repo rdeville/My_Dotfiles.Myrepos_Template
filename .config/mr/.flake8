@@ -1,0 +1,123 @@
+[flake8]
+# Print the total number of errors.
+# Default False
+count = True
+# Provide a comma-separated list of glob patterns to exclude from checks.
+# This defaults to: .svn,CVS,.bzr,.hg,.git,__pycache__,.tox
+exclude =
+  .git,
+  __pycache__,
+  .eggs,
+  .venv,
+  .direnv,
+  .tox,
+  build,
+  dist
+# Provide a comma-separate list of glob patterns to include for checks.
+# This defaults to: *.py
+#filename =
+#  *.py
+# Select the formatter used to display errors to the user.
+# This defaults to: default
+# By default, there are two formatters available:
+#  - default
+#  - pylint
+# The default formatter has a format string of:
+# '%(path)s:%(row)d:%(col)d: %(code)s %(text)s'
+#format=default
+# Toggle whether pycodestyle should enforce matching the indentation of the
+# opening bracket’s line. When you specify this, it will prefer that you hang
+# the closing bracket rather than match the indentation.
+hang_closing = False
+# Specify a list of codes to ignore. The list is expected to be comma-separated,
+# and does not need to specify an error code exactly. Since Flake8 3.0, this can
+# be combined with --select. See --select for more information.
+# For example, if you wish to only ignore W234, then you can specify that. But
+# if you want to ignore all codes that start with W23 you need only specify W23
+# to ignore them. This also works for W2 and W (for example).
+# This defaults to: E121,E123,E126,E226,E24,E704
+#ignore =
+#  E121,
+#  E123,
+#  E126,
+#  E226,
+#  E24,
+#  E704
+# Set the maximum length that any line (with some exceptions) may be.
+# Exceptions include lines that are either strings or comments which are
+# entirely URLs. For example:
+# ```
+# # https://some-super-long-domain-name.com/with/some/very/long/path
+# url = (
+#   'http://...'
+# )
+# This defaults to: 79
+max-line-length = 80
+
+--select=<errors>
+
+# Specify the list of error codes you wish Flake8 to report. Similarly to
+# --ignore. You can specify a portion of an error code to get all that start
+# with that string. For example, you can use E, E4, E43, and E431.
+# This defaults to: E,F,W,C
+#select =
+#  E,
+#  F,
+#  W,
+#  C,
+# Report all errors, even if it is on the same line as a # NOQA comment. # NOQA
+# can be used to silence messages on specific lines. Sometimes, users will want
+# to see what errors are being silenced without editing the file. This option
+# allows you to see all the warnings, errors, etc. reported.
+# This default to : False
+disable_noqa = True
+# Print the source code generating the error/warning in question.
+show_source = True
+# Count the number of occurrences of each error/warning code and print a report.
+statistics = True
+
+# Enable off-by-default extensions.
+# Plugins to Flake8 have the option of registering themselves as off-by-default.
+# These plugins effectively add themselves to the default ignore list.
+#enable-extensions =
+#  H111,
+#  G123
+# Specify the number of subprocesses that Flake8 will use to run checks in parallel.
+# Note
+# This option is ignored on Windows because multiprocessing does not support
+# Windows across all supported versions of Python.
+# This defaults to: auto
+# The default behaviour will use the number of CPUs on your machine as reported
+# by multiprocessing.cpu_count().
+jobs = auto
+# Redirect all output to the specified file.
+output-file = .log/flake8.log
+# Also print output to stdout if output-file has been configured.
+tee = True
+# Provide a custom list of builtin functions, objects, names, etc.
+# This allows you to let pyflakes know about builtins that it may not
+# immediately recognize so it does not report warnings for using an undefined
+# name.
+# This is registered by the default PyFlakes plugin.
+#builtins =
+#  _,
+#  _LE,
+#  _LW
+# Enable PyFlakes syntax checking of doctests in docstrings.
+# This is registered by the default PyFlakes plugin.
+#doctests = True
+# Specify which files are checked by PyFlakes for doctest syntax.
+# This is registered by the default PyFlakes plugin.
+#include-in-doctest =
+#  dir/subdir/file.py,
+#  dir/other/file.py
+# Specify which files are not to be checked by PyFlakes for doctest syntax.
+# This is registered by the default PyFlakes plugin.
+#exclude-in-doctest =
+#  dir/subdir/file.py,
+#  dir/other/file.py
+
+# -----------------------------------------------------------------------------
+# Vim modeline
+# vim: ft=toml
+# -----------------------------------------------------------------------------
