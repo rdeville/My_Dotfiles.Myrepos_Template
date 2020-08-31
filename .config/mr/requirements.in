@@ -1,0 +1,8 @@
+# Basic module
+pip-tools
+wheel
+# Production needed package
+pykwalify
+jinja2
+git-url-parse
+prompt_toolkit
