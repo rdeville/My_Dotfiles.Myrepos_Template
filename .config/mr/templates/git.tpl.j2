@@ -1,0 +1,40 @@
+[{{ repo_path }}]
+checkout  =
+  {%- if command.pre_clone is defined %}
+  {%-    for i_command in command.pre_clone %}
+  {{ i_command }}
+  {%-    endfor %}
+  {%- endif %}
+  echo '\e[0;32m[INFO] Clone {{ repo_name }} from {{ repo_domain }}\e[0m'
+  git clone {{ repo_url }} {{ repo_path }}
+  cd {{ repo_path }}
+  echo '\e[0;32m[INFO]    Set upstream push\e[0m'
+  git push -u origin master;
+  echo '\e[0;32m[INFO]    Pull all remote branch\e[0m'
+  git pull --all;
+  {%- if command.post_clone is defined %}
+  {%-    for i_command in command.post_clone %}
+  {{ i_command }}
+  {%-    endfor %}
+  {%- endif %}
+pull      =
+  echo '\e[0;32m[INFO] Pull {{ repo_name }} from {{ repo_domain }}\e[0m';
+  git pull --all;
+push      =
+  echo '\e[0;32m[INFO] Push all {{ repo_name }} to {{ repo_domain }}\e[0m';
+  git push --all;
+  echo '\e[0;32m[INFO] Push tags {{ repo_name }} to {{ repo_domain }}\e[0m';
+  git push --tags;
+upstream  =
+  echo '\e[0;32m[INFO] Setting upstream of {{ repo_name }} to origin\e[0m';
+  git branch --set-upstream-to=origin/$(git branch --show-current) $(git branch --show-current);
+remote    =
+  git remote -v show;
+branch    =
+  git branch -a;
+delete    =
+  echo '\e[0;31m[WARNING} Will delete \e[1;31m{{ repo_name }}.\e[0m';
+  echo 'Press \e[0;31mEnter\e[0m to continue or \e[0;32mCtrl-D\e[0m to abort';
+  read yn;
+  echo '\e[0;31mDelete \e[1;31m{{ repo_name }}\e[0;31m.\e[0m';
+  rm -rf {{ repo_path }};

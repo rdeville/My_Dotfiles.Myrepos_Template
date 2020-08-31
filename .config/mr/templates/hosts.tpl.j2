@@ -1,0 +1,4 @@
+{%- for i_repo in selected_repo %}
+# {{ selected_repo[i_repo] }}
+include = cat {{ i_repo }}
+{%- endfor -%}
