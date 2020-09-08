@@ -19,12 +19,18 @@ from prompt_toolkit.styles import Style
 from pykwalify import core as pykwalify_core
 
 THIS_FILE_DIR = os.path.abspath(os.path.dirname(__file__))
+"""The absolute path of the script"""
 MR_DIR = os.path.join(os.environ["HOME"], ".config", "mr")
+"""The absolute path of the myrepos folder"""
 HOSTNAME = socket.gethostname()
+"""The hostname of the current computer"""
 HOST_FILE = os.path.join(MR_DIR, "hosts", HOSTNAME + ".cfg")
+"""The absolute path where the host configuration will be stored"""
 TODAY = date.today()
 TODAY = TODAY.strftime("%Y-%m-%d")
+"""Today date for backup file"""
 CONFIG_SCHEMA = [os.path.join(MR_DIR, "config.schema.yaml")]
+"""Absolute paths to the YAML schema"""
 
 
 class Colors:
@@ -34,10 +40,15 @@ class Colors:
 
     # pylint: disable=too-few-public-methods
     info = "\033[32m"
+    """Color prefix when printing info log, usually green"""
     warning = "\033[33m"
+    """Color prefix when printing warning log, usually yellow"""
     error = "\033[31m"
+    """Color prefix when printing error log, usually red"""
     normal = "\033[0m"
+    """Color prefix to revert printing log back to normal"""
     bold = "\033[1m"
+    """Color prefix print log in bold"""
 
 
 class Repo:
@@ -45,7 +56,20 @@ class Repo:
     Class which handle the configuration of repos for myrepos.
     """
 
-    def __init__(self, conf_file, dest_dir):
+    def __init__(self, conf_file: str, dest_dir: str) -> None:
+        """
+        Default constructor to initialize Repo object which will store:
+
+          - Current LC_ALL and LANGUAGE environment variable
+          - Setup destination directory where repo configuration will be stored
+          - Configuration provided by user
+          - Jinja2 information to render file from templates
+
+        Arguments:
+            conf_file: Path to the configuration file
+            dest_dir:
+                Path to the directory where myrepos configuration will be stored
+        """
         self._env = dict()
         self._dest_dir = os.path.join(THIS_FILE_DIR, "repos", dest_dir)
         self._conf = load_config(conf_file)
@@ -59,7 +83,11 @@ class Repo:
         os.environ["LC_ALL"] = "en_US.UTF-8"
         os.environ["LANGUAGE"] = "en_US.UTF-8"
 
-    def __del__(self):
+    def __del__(self) -> None:
+        """
+        Default deleter which will restore environment variables LC_ALL and
+        LANGUAGE
+        """
         if "LC_ALL" in self._env:
             os.environ["LC_ALL"] = self._env["LC_ALL"]
         if "LANGUAGE" in self._env:
@@ -116,7 +144,8 @@ class Repo:
 
 class Host(Repo):
     """
-    Class which handle the update of host configuration.
+    Class which handle the update of host configuration. Inherit Repo Class
+    Inherit Repo Class.
     """
 
     # pylint: disable=too-few-public-methods
@@ -146,7 +175,11 @@ class Host(Repo):
             repos[key] = i_repo["desc"]
         return values, repos
 
-    def process(self):
+    def process(self) -> None:
+        """
+        Compute the dialog window to ask user which repos to setup for the
+        current host
+        """
         title = "Setup " + HOSTNAME
         text = "Which repo to setup with myrepo on " + HOSTNAME
         values = list()
