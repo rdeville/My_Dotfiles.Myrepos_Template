@@ -6,9 +6,10 @@
 
 # Website Information
 # ---------------------------------------------------------------------------
-site_name: MyRepo
+site_name: MyRepo Template
 site_description: >-
-  TODO
+  Template to initialize myrepos (https//myrepos.branchable.com) configuration
+  per repos and per hosts
 site_url: https://docs.romaindeville.fr/dotfiles/config/mr
 
 # Repository Information
@@ -109,12 +110,13 @@ plugins:
       handlers:
         python:
           rendering:
-            show_source: false
+            show_source: true
+            show_if_no_docstring: true
           setup_commands:
             - import sys
-            - sys.path.append(".direnv/src")
+            - sys.path.append("./")
       watch:
-        - .direnv/src/
+        - main.py
 
 # Extensions
 # ---------------------------------------------------------------------------
@@ -192,22 +194,23 @@ markdown_extensions:
 # ---------------------------------------------------------------------------
 nav:
   - Home: index.md
-  - Requirements: requirements.md
-  - Guides:
-    - Developers guide: guides/developers_guide.md
-    - Administrator guide: guides/administrator_guide.md
-    - User guide: guides/user_guide.md
-    - Syntax guide: guides/syntax_guide.md
-  - Tutorials:
-    - Introduction: tutorials/introduction.md
-    - Git Branch Management: tutorials/git_branch_management.md
-    - Update Documentation: tutorials/update_documentation.md
-    - Update Roles: tutorials/update_roles.md
-  - Contributing to PAGoDA: contributing.md
-  - Appendix:
-    - Introduction: appendix.md
-    - Lexicon: appendix.html#lexicon
-    - External Documentation: appendix.html#external-documentation
+  - Software Details:
+    - MyRepos: soft_details/my_repos.md
+    - VCSH: soft_details/vcsh.md
+    - direnv: soft_details/direnv.md
+  - Usage:
+    - Define per repo config: usage/per_repo_config.md
+    - Define per host config: usage/pre_hosts_config.md
+  - Developers Guides:
+    - Syntax guide: dev_guides/syntax_guide.md
+    - Contributing: dev_guides/contributing.md
+    - Tutorials:
+      - Git Branch Management: dev_guides/tutorials/git_branch_management.md
+      - Add new feature: dev_guides/tutorials/add_new_feature.md
+      - Update Documentation: dev_guides/tutorials/update_documentation.md
+    - References:
+      - main.py: dev_guides/references/main.py.md
+  - Appendix: appendix.md
   - About:
     - Release Notes: about/release_notes.md
     - FAQ: about/FAQ.md
