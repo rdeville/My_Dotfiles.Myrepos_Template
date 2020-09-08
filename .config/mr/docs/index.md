@@ -225,61 +225,8 @@ Red repos are classic git repo while green repos are vcsh repos. Once selected,
 the file `~/.config/hosts/$(hostname).cfg` will automatically be created with
 selected repos.
 
-## Documentation
-
-A more details documentation, with tutorials, is available at [MyRepos Online
-Documentation][myrepo_online_documentation]. In this documentation is also
-provided methods to version your configuration files.
-
-**IMPORTANT !!**
-
-If, for any reason, the link to the [MyRepos Online
-Documentation][myrepo_online_documentation] is broken, you can generate the
-documention locally on your computer (since the documentation is jointly stored
-within the repository).
-
-Assuming you have already installed required binaries and cloned the repo as
-described in [Software Requirements](#software-requirements), first got to the
-documentation location:
-
-```bash
-# Go to the documentation location
-cd ~/.docs/config/mr/
-```
-
-Then, setup a temporary python virtual environment and activate it:
-
-```bash
-# Create the temporary virtual environment
-python3 -m venv .temporary_venv
-# Activate it
-source .temporary_venv/bin/activate
-```
-Now, install required dependencies to render the documentation in the python
-virtual environment:
-
-```bash
-# Assuming you are in ~/.docs/config/mr
-pip3 install -r requirements.txt
-```
-
-Now you can easily render the documentation by using [mkdocs][mkdocs] through
-the usage of the following command (some logs will be outputed to stdout):
-
-```bash
-# Assuming you are in ~/.docs/config/mr
-mkdocs serve
-```
-
-You can now browse the full documentation by visiting
-[http://localhost:8000][localhost].
-
-
 [myrepos]: https://myrepos.branchable.com/
 [myrepo_repo_url]: https://framagit.org/rdeville.public/my_dotfiles/myrepo
 [vcsh]: https://github.com/RichiH/vcsh
 [direnv]: https://direnv.net
-[mkdocs]: https://www.mkdocs.org/
-[localhost]: http://localhost:8000
-[myrepo_online_documentation]: https://docs.romaindeville.fr/dotfiles/config/mr
 [checkbox_list_screenshot]: assets/img/checkbox_list.png
