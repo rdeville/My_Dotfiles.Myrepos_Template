@@ -199,8 +199,7 @@ nav:
     - VCSH: soft_details/vcsh.md
     - direnv: soft_details/direnv.md
   - Usage:
-    - Define per repo config: usage/per_repo_config.md
-    - Define per host config: usage/pre_hosts_config.md
+    - Setup myrepos configuration: usage/setup_myrepos_configuration.md
     - Keep your own configuration: usage/keep_your_configuration.md
   - Developers Guides:
     - Syntax guide: dev_guides/syntax_guide.md
