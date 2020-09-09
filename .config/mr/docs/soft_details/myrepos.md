@@ -207,6 +207,14 @@ include = cat ${HOME}/.config/mr/perso/myrepo.vcsh
 include = cat ${HOME}/.config/mr/perso/st_dev.git
 ```
 
+When configuring manually your host, you can also include all files within a
+folder:
+
+```toml
+# Include all vcsh and git repos at once
+include = cat ${HOME}/.config/mr/perso/*
+```
+
 [myrepos_doc]: https://myrepos.branchable.com/
 [home]: /index.html
 [vcsh]: https://github.com/RichiH/vcsh
