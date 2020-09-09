@@ -22,16 +22,12 @@ href="https://myrepos.branchable.com/">myrepos</a> using user configuration.</b>
 
 --------------------------------------------------------------------------------
 
-Main repo on [ Framagit][myrepo_repo_url] is just here to propose a
-scaffolding repo to setup [myrepos][myrepos]. Its aims is not to store any
-deployment configuration.
-<br>
-<br>
-<div align="center" style="text-align: center;">
-<b><i>PLEASE FORK THIS REPO TO STORE YOUR OWN CONFIGURATION</i></b>
-</div>
+Main repo is on [ Framagit][myrepo_repo_url]. On another online git platforms,
+their are just mirror of the main repo. Any issues, pull/merge requests, etc,
+might not be considered on those other platforms.
 
 --------------------------------------------------------------------------------
+
 
 # Table of Content
 
@@ -231,6 +227,14 @@ include = cat /path/to/repos/repo_name.git
 ```
 
 Where `/path/to/repos` is the folder created next to your configuration file.
+
+When configuring manually your host, you can also include all files within a
+folder:
+
+```toml
+# Include all vcsh and git repos at once
+include = cat /path/to/repos/*
+```
 
 ## Automatically configure host
 
