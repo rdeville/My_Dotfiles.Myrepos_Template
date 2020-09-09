@@ -195,7 +195,7 @@ markdown_extensions:
 nav:
   - Home: index.md
   - Software Details:
-    - MyRepos: soft_details/my_repos.md
+    - MyRepos: soft_details/myrepos.md
     - VCSH: soft_details/vcsh.md
     - direnv: soft_details/direnv.md
   - Usage:
