@@ -112,7 +112,21 @@ vcsh clone https://framagit.org/rdeville.public/my_dotfiles/myrepo.git myrepo
 vcsh clone git@framagit.org:rdeville.public/my_dotfiles/myrepo.git myrepo
 ```
 
-# Usage
+Then, you will need to install python required dependencies to be able to use
+the `main.py` script:
+
+```bash
+# Go where the script main.py is
+cd ~/.config/mr
+# Create python virtual environment
+python3 -m venv .virtualenv
+# Activate the virtual environment
+source .virtualenv/bin/activate
+# Install python required dependencies in the virtualenvironment
+pip3 install -r requirements.txt
+```
+
+## Usage
 
 Within the folder `~/.config/mr` create the YAML configuration file you will
 provide to the script. The configuration will describe version control repos you
@@ -169,7 +183,7 @@ Let us assume you put the configuration file in
 each of the version control repos describe in the configuration file.
 
 ```bash
-# Assuming you are in ~/.config/mr
+# Assuming you are in ~/.config/mr and you install python dependencies
 ./main.py perso/my_config.yaml
 # Or using absolute path or ${HOME} relative path
 ./main.py ~/.config/mr/perso/my_config.yaml
@@ -183,7 +197,7 @@ and other for profesional repo, you can provide multiple configuration files at
 once:
 
 ```bash
-# Assuming you are in ~/.config/mr
+# Assuming you are in ~/.config/mr and you install python dependencies
 ./main.py perso/my_config.yaml pro/config.yaml
 # Or using mixed of "absolute" path and relative path
 ./main.py ~/.config/mr/perso/my_config.yaml pro/config.yaml
