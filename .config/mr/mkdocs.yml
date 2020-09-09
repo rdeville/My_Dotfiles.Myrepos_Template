@@ -202,8 +202,8 @@ nav:
     - Setup myrepos configuration: usage/setup_myrepos_configuration.md
     - Keep your own configuration: usage/keep_your_configuration.md
   - Developers Guides:
-    - Syntax guide: dev_guides/syntax_guide.md
     - Contributing: dev_guides/contributing.md
+    - Syntax guide: dev_guides/syntax_guide.md
     - Tutorials:
       - Git Branch Management: dev_guides/tutorials/git_branch_management.md
       - Add new feature: dev_guides/tutorials/add_new_feature.md
