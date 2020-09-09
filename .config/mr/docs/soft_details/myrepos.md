@@ -218,5 +218,5 @@ include = cat ${HOME}/.config/mr/perso/*
 [myrepos_doc]: https://myrepos.branchable.com/
 [home]: /index.html
 [vcsh]: https://github.com/RichiH/vcsh
-[manual_host_config]: /index.html#manually-configure-host
-[auto_host_config]: /index.html#automatically-configure-host
+[manual_host_config]: /usage/setup_myrepos_configuration.html#manually-configure-host
+[auto_host_config]: /usage/setup_myrepos_configuration.html#automatically-configure-host
