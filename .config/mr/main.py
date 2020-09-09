@@ -150,6 +150,8 @@ class Host(Repo):
 
     # pylint: disable=too-few-public-methods
     def _process_host_repos(self, repo_type, repos, values):
+        if not os.path.isdir(self._dest_dir):
+            os.mkdir(self._dest_dir)
         for i_repo in self._conf["repos"][repo_type]:
             key = os.path.join(self._dest_dir, i_repo["name"] + "." + repo_type)
             if repo_type == "git":
