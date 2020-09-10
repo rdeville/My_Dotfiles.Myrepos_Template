@@ -205,10 +205,10 @@ nav:
   - Developers Guides:
     - Contributing: dev_guides/contributing.md
     - Syntax guide: dev_guides/syntax_guide.md
+    - Developers guidelines: dev_guides/developer_guidelines.md
     - Tutorials:
-      - Git Branch Management: dev_guides/tutorials/git_branch_management.md
-      - Add new feature: dev_guides/tutorials/add_new_feature.md
       - Update Documentation: dev_guides/tutorials/update_documentation.md
+      - Update CI: dev_guides/tutorials/update_ci.md
     - References:
       - main.py: dev_guides/references/main.py.md
   - Appendix: appendix.md
