@@ -25,9 +25,10 @@ For more information, you can check the following pages:
 
   * [Syntax Guide][syntax_guide], which describe syntax guidelines to follow if
    you want to contribute.
+  * [Developer Guidelines][developers_guidelines], which describe developers
+    guidelines to follow if you want to contribute, mainly git branch management
+    of the repo.
   * Tutorials:
-     * [Git branch mangement][git_branch_management], which describe how the
-      branch of the repos are managed.
      * [Add new feature][add_new_feature], tutorial to learn how to add and test
       a new feature you may want to propose.
      * [Update documentation][update_documentation], tutorial to learn how to
@@ -39,9 +40,8 @@ Finally, every member of the community should follow this [Code of
 conduct][code_of_conduct].
 
 [issue_tracker]: https://framagit.org/rdeville.public/my_dotfiles/myrepo/-/issues
-[developers_guidelines]: https://perso.liris.cnrs.fr/romain.deville/pagoda/tools/direnv_template/guides/developers_guide
+[developers_guidelines]: developer_guidelines.md
 [syntax_guide]: syntax_guide.md
-[git_branch_management]: tutorials/git_branch_management.md
 [add_new_feature]: tutorials/add_new_feature.md
 [update_documentation]: tutorials/update_documentation.md
 [code_of_conduct]: ../about/code_of_conduct.md
