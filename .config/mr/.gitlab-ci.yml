@@ -35,10 +35,9 @@ variables:
         build-base
         python3-dev
         py3-pip
+        py3-virtualenv
         bash
         git
-    # Install virtual environment
-    - pip3 install virtualenv
     # Create virtual environment
     - virtualenv .venv
     # Activate virtual environment
