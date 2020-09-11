@@ -219,13 +219,9 @@ deploy_dev:
   <<: *job_deploy_dev
   script:
     - rsync -avz site/ "${ONLINE_DEST}${CI_PROJECT_PATH}-${CI_PIPELINE_ID}"
-    - echo "Documentation is now accessible at :"
-    - echo "https://docs-dev.romaindeville.fr/${CI_PROJECT_PATH}-${CI_PIPELINE_ID}"
 
 deploy_master:
   <<: *stage_deploy
   <<: *job_deploy_prod
   script:
     - rsync -avz site/ "${ONLINE_DEST}${CI_PROJECT_PATH}"
-    - echo "Documentation is now accessible at :"
-    - echo "https://docs-dev.romaindeville.fr/${CI_PROJECT_PATH}-${CI_PIPELINE_ID}"
