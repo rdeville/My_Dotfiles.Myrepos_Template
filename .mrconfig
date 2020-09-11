@@ -1,0 +1,9 @@
+[DEFAULT]
+# Teach mr how to `mr gc` in git repos.
+git_gc = git gc "$@"
+
+include =
+  if [ -f "${HOME}/.config/mr/hosts/$(hostname).cfg" ]
+  then
+    cat "${HOME}/.config/mr/hosts/$(hostname).cfg"
+  fi

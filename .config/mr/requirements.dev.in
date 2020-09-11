@@ -1,0 +1,6 @@
+# Testing suite related module
+tox
+black
+flake8
+pylint
+shellcheck-py

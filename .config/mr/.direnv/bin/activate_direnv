@@ -1,0 +1,215 @@
+#!/usr/bin/env bash
+# ---------------------------------------------------------------------------
+# NAME:
+#   activate_direnv
+#     Setup directory environment (load venv, export variables ...)
+#
+# DESCRIPTION:
+#   Allow to easily repeat process of setting up environment variable, such as:
+#     - Loading openstack 'OS_*' variables from openrc.sh files,
+#     - Activating python virtualenv using command 'source .venv/bin/activate,
+#     - Setup working environment such as KUBECONFIG, ANSIBLE_CONFIG, etc.
+#
+#   For instance, if you use python virtualenv and openstack. Usually, when
+#   starting to work, you often may enter the following command:
+#
+#   ```
+#     # Load OpenStack project variable
+#     source openrc.sh
+#     # Activate python virtual environment
+#     source .venv/bin/activate
+#   ```
+#   The aims of this script is basically to script these actions
+#
+#   There is two way to use this script, manually or using `direnv`.
+#
+#     Manually:
+#       Simply as python virtual environment, you can simply source this script:
+#
+#       ```bash
+#       # Load the directory environment
+#       source .direnv/bin/activate_direnv
+#       ```
+#
+#       This will also register a method to deactivate the working environment.
+#       Once you finish to work on your project and want to unload python or
+#       variables for instance. Simply type the following command:
+#
+#       ```bash
+#       # Unload the directory environment
+#       deactivate_direnv
+#       ```
+#
+#     Using `direnv`:
+#       [Direnv](https://direnv.net/) is a tool allowing to automatically call a
+#       specific script (.envrc) when entering or leaving a directory.
+#       In short, once configured, you will have no command to type, after going
+#       to your working directory.
+#
+#       If you are using direnv, the file .envrc.template at the root of the repo
+#       provide you a template to automatically call this script.
+#       To use it, you can copy it or create a symlinnk to it:
+#
+#       ```bash
+#       # Assuming you are at the root of the repo
+#       # Copy the template file
+#       cp .envrc.template .envrc
+#       # Or create a symlink to it
+#       ln .envrc.template .envrc
+#
+#       # Review its content with your favorite editor (vim here as example)
+#       vim .envrc
+#
+#       # If you understand and agree to what is scripted in .envrc, allow it
+#       #for direnv
+#       direnv allow
+#       ```
+#
+#       And that is all, each time you will enter the directory where file
+#       .envrc is, this script will automatically be loaded when entering it and
+#       automatically unloaded when leaving it.
+#
+#
+
+# SHELLCHECK
+# ---------------------------------------------------------------------------
+# Globally disable some shellcheck errors, warnings or remarks.
+# shellcheck disable=SC1090,SC2155
+#   - SC1090: Can't follow non-constant source. Use a directive to specify location.
+#   - SC2155: Declare and assign separately to avoid masking return values.
+#
+
+# COLORING ECHO OUTPUT
+# ---------------------------------------------------------------------------
+# Some exported variable I sometimes use in my script to echo informations in
+# colors. Base on only 8 colors to ensure portability of color when in tty
+export E_NORMAL="\e[0m"     # Normal (white fg & transparent bg)
+export E_BOLD="\e[1m"       # Bold
+export E_DIM="\e[2m"        # Dim
+export E_ITALIC="\e[3m"     # Italic
+export E_UNDERLINE="\e[4m"  # Underline
+export E_DEBUG="\e[0;35m"   # Magenta fg
+export E_INFO="\e[0;32m"    # Green fg
+export E_WARNING="\e[0;33m" # Yellow fg
+export E_ERROR="\e[0;31m"   # Red fg
+export E_TIME="\e[0;34m"    # Cyan fg
+
+# PATH MANAGEMENT
+# ------------------------------------------------------------------------------
+# Update path to be able to use some functions such as 'keepass' and
+# 'set_os_env'
+export OLD_PATH="${PATH}"
+export PATH="${DIRENV_DIR}/.direnv/bin:${PATH}"
+# Ensure log directory in direnv exist to store direnv output we do not want to
+# show in stdout when loading direnv
+direnv_root_log_dir="${DIRENV_DIR}/.direnv/log"
+direnv_log_file="${direnv_root_log_dir}/activate_direnv.log"
+if ! [[ -d "${direnv_root_log_dir}" ]]
+then
+  echo -e "${E_INFO}\
+[INFO] Creation of the folder ${direnv_root_log_dir}.${E_NORMAL}"
+  mkdir -p "${direnv_root_log_dir}"
+fi
+
+# EXTERNAL REQUIREMENTS
+# ------------------------------------------------------------------------------
+# Ensure external requirements, ensure python version
+python_version="3.8"
+if ! [[ -f "${DIRENV_DIR}/.direnv/.python_verion.ok" ]]
+then
+  if (! command -v python3 &> /dev/null \
+      || ! python3 --version | grep -q ${python_version})
+  then
+    echo -e "${E_ERROR}\
+[ERROR] - Required python version ${python_version} is not installed.
+[ERROR] - refer to your distribution documentation.
+${E_NORMAL}"
+    source "${DIRENV_DIR}/.direnv/bin/scripts/deactivate_direnv"
+    deactivate_direnv
+    exit 1
+  elif (! command -v pip3 &> /dev/null \
+        || ! pip3 --version | grep -q ${python_version})
+  then
+    echo -e "${E_ERROR}\
+[ERROR] - Required pip version using python version ${python_version} is not installed.
+[ERROR] - Refer to your distribution documentation to install pip3 using python ${python_version}.
+${E_NORMAL}"
+    source "${DIRENV_DIR}/.direnv/bin/scripts/deactivate_direnv"
+    deactivate_direnv
+    exit 1
+  else
+    touch "${DIRENV_DIR}/.direnv/.python_version.ok"
+  fi
+fi
+
+# PYTHON VIRTUAL ENV
+# ------------------------------------------------------------------------------
+# Setup variable local to this file to compute python virtual environment.
+dir_name=$(basename "${DIRENV_DIR}")
+# Directory where the virtual environment folder will be.
+venv_dir="${DIRENV_DIR}/.direnv/python_venv/${dir_name}"
+# Python production requirements base filename.
+prod_requirement="${DIRENV_DIR}/requirements"
+# Python development requirements base filename.
+dev_requirement="${DIRENV_DIR}/requirements.dev"
+# Setup python virtual environment if it does not already exists.
+if ! [[ -d "${venv_dir}" ]]
+then
+  # Get parent dir where python virtual environment will be stored.
+  mkdir -p "${venv_dir%/*}"
+  # Create python virtual environment.
+  python3 -m venv "${venv_dir}"
+  # Activate virtualenv before installing dependencies.
+  source "${venv_dir}/bin/activate"
+  # Install setuptools and wheel as fist dependencies.
+  echo -e "${E_INFO}\
+[INFO] Installing minimum python virtual environment dependencies.
+[INFO] Output of installation will be put in ${direnv_log_file}.${E_NORMAL}"
+  pip install setuptools wheel pip-tools >> "${direnv_log_file}"
+  # ---------------------------------------------------------------------------
+  # Comment following lines if you do not wish to install development
+  # dependencies.
+  # Compute pinned depencencies for dependencies.
+  if ! [[ -f "${dev_requirement}.txt" ]] && [[ -f "${dev_requirement}.in" ]]
+  then
+    echo -e "${E_INFO}\
+[INFO] Generation of the python development requirements with pinned version.${E_NORMAL}"
+    pip-compile -q -o "${dev_requirement}.txt" "${dev_requirement}.in"
+    sed -i "s|${DIRENV_DIR}|.|g" "${dev_requirement}.txt"
+  fi
+  if [[ -f "${dev_requirement}.txt" ]]
+  then
+    echo -e "${E_INFO}\
+[INFO] Installing python dependencies for development.
+[INFO] Output of installation will be put in ${direnv_log_file}.${E_NORMAL}"
+    pip install -r "${dev_requirement}.txt" >> "${direnv_log_file}"
+  fi
+  # Install python pinned dependencies for development.
+  # ---------------------------------------------------------------------------
+  # Compute pinned depencencies for production.
+  if ! [[ -f "${prod_requirement}.txt" ]] && [[ -f "${prod_requirement}.in" ]]
+  then
+    echo -e "${E_INFO}\
+[INFO] Generation of the python production requirements with pinned version.${E_NORMAL}"
+    pip-compile -q -o "${prod_requirement}.txt" "${prod_requirement}.in"
+    sed -i "s|${DIRENV_DIR}|.|g" "${prod_requirement}.txt"
+  fi
+  if [[ -f "${prod_requirement}.txt" ]]
+  then
+    echo -e "${E_INFO}\
+[INFO] Installing python dependencies for production.
+[INFO] Output of installation will be put in ${direnv_log_file}.${E_NORMAL}"
+    pip install -r "${prod_requirement}.txt" >> "${direnv_log_file}"
+  fi
+else
+  source "${venv_dir}/bin/activate"
+fi
+
+# DOT NOT DELETE ANYTHING AFTER THIS LINE !!!!!!
+# Otherwise directory environment using direnv will not work anymore.
+source <(cat "${DIRENV_DIR}/.direnv/bin/scripts/deactivate_direnv")
+
+# ------------------------------------------------------------------------------
+# VIM MODELINE
+# vim: ft=bash: ts=2: sw=2: sts=2
+# ------------------------------------------------------------------------------

@@ -1,0 +1,42 @@
+[${HOME}/.config/vcsh/repo.d/{{ repo_name }}.git]
+checkout  =
+  {%- if command.pre_clone is defined %}
+  {%-    for i_command in command.pre_clone %}
+  {{ i_command }}
+  {%-    endfor %}
+  {%- endif %}
+  echo '\e[0;32m[INFO] Clone {{ repo_name }} from {{ repo_domain }}\e[0m'
+  vcsh clone {{ repo_url }} {{ repo_name }}
+  echo '\e[0;32m[INFO]    Set upstream push\e[0m'
+  vcsh {{ repo_name }} push -u origin master;
+  echo '\e[0;32m[INFO]    Pull all remote branch\e[0m'
+  vcsh {{ repo_name }} pull --all;
+  {%- if command.post_clone is defined %}
+  {%-    for i_command in command.post_clone %}
+  echo '{{ i_command }}; exit' |  vcsh {{ repo_name }}
+  {%-    endfor %}
+  {%- endif %}
+pull      =
+  echo '\e[0;32m[INFO] Pull {{ repo_name }} from {{ repo_domain }}\e[0m';
+  vcsh {{ repo_name }} pull origin $(git branch --show-current) --all;
+update    =
+  echo '\e[0;32m[INFO] Pull {{ repo_name }} from {{ repo_domain }}\e[0m';
+  vcsh {{ repo_name }} pull origin $(git branch --show-current) --all;
+upstream  =
+  echo '\e[0;32m[INFO] Setting upstream of {{ repo_name }} to origin\e[0m';
+  vcsh {{ repo_name }} branch --set-upstream-to=origin/$(vcsh {{ repo_name }} branch --show-current) $(vcsh {{ repo_name }} branch --show-current);
+push      =
+  echo '\e[0;32m[INFO] Push all {{ repo_name }} to {{ repo_domain }}\e[0m';
+  vcsh {{ repo_name }} push --all;
+  echo '\e[0;32m[INFO] Push tags {{ repo_name }} to {{ repo_domain }}\e[0m';
+  vcsh {{ repo_name }} push --tags;
+remote    =
+  vcsh {{ repo_name }} remote -v show;
+branch    =
+  vcsh {{ repo_name }} branch -a;
+delete    =
+  echo '\e[0;31m[WARNING] Will delete \e[1;31m{{ repo_name }}.\e[0m';
+  echo 'Press \e[0;31mEnter\e[0m to continue or \e[0;32mCtrl-D\e[0m to abort';
+  read yn;
+  echo '\e[0;31mDelete \e[1;31m{{ repo_name }}\e[0;31m.\e[0m';
+  vcsh delete {{ repo_name }};

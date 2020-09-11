@@ -1,0 +1,19 @@
+# Basic module
+pip-tools
+wheel
+# Production needed package
+pykwalify
+jinja2
+git-url-parse
+prompt_toolkit
+
+# Documentation rendering dependencies
+mkdocs
+mkdocs-material
+mkdocs-minify-plugin
+mkdocs-monorepo-plugin
+mkdocs-mermaid2-plugin
+mkdocs-git-revision-date-localized-plugin
+mkdocstrings
+markdown-include
+git+https://github.com/g-provost/lightgallery-markdown
