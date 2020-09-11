@@ -1,0 +1,73 @@
+#!/usr/bin/env bash
+# ---------------------------------------------------------------------------
+# NAME:
+#   deactivate_direnv
+#     Unload directory environment variables.
+#
+# DESCRIPTION:
+#   Allow to easily repeat process of unsetting environment variable, such as:
+#     - Unloading openstack 'OS_*' variables,
+#     - Deactivating python virtualenv using command 'deactivate',
+#
+#   For instance, if you use python virtualenv and openstack. Usually, when
+#   finishing to work, you often may enter the following command:
+#
+#   ```
+#     # Load OpenStack project variable
+#     unset OS_USERNAME
+#     unset OS_PASSWORD
+#     ...
+#     # Activate python virtual environment
+#     deactivate
+#   ```
+#
+#   The aims of this script is basically to script these actions
+#
+#   Normally, this script script is automatically loaded when sourcing
+#   .direnv/bin/activate_direnv and set the method 'deactivate_direnv'.
+#
+
+
+# When called with `source .direnv/bin/activate_direnv`, setup following method
+# to deactivate directory environment
+deactivate_direnv()
+{
+  # Method that restore the PATH, deactivate python virtual environment and
+  # unset every exported variable in file '.direnv/bin/activate_direnv'
+  # Get the activate_direnv script path.
+  direnv_activation_file="${DIRENV_ROOT}/.direnv/bin/activate_direnv"
+  # Ensure user have setup his/her own sourcing script
+  if [[ -e "${direnv_activation_file}" ]]
+  then
+    # Gather previous path which should have be saved in ${direnv_activation_file}
+    restored_path=${OLD_PATH}
+    # Deactivate python venv
+    if [[ -n "${VIRTUAL_ENV}" ]]
+    then
+      deactivate
+    fi
+    # Unset all exported variable except PATH
+    var=$(grep -E "^[ ]*export" "${direnv_activation_file}" | cut -d "=" -f 1 \
+      | sed "s/export//g")
+    while read -r line
+      do
+        # Unset all exported variables except PATH
+        if ! echo "${line/"export"/}" | grep -q PATH
+        then
+          unset "${line/"export"/}"
+        fi
+      done <<<"${var}"
+    # Restore PATH
+    export PATH=${restored_path}
+  else
+    echo "${E_ERROR}\
+[ERROR] - File ${direnv_activation_file} does not exists !
+[ERROR] - Unsetting directory environment might not work correctly.
+[ERROR] - Please take a look at the README.md to how to set directory environment.${E_NORMAL}"
+  fi
+}
+
+# ------------------------------------------------------------------------------
+# VIM MODELINE
+# vim: ft=bash: ts=2: sw=2: sts=2
+# ------------------------------------------------------------------------------
