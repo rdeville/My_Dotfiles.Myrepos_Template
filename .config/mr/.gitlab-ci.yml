@@ -85,13 +85,6 @@ variables:
     refs:
       - master
 
-# Tag anchors
-# -----------------------------------------------------------------------------
-# Run jobs in regular docker
-.tag_docker: &tag_docker
-  tags:
-    - rdeville.public_docker
-
 # Stages anchors
 # -----------------------------------------------------------------------------
 # Setup stage on which jobs will be run
@@ -130,19 +123,16 @@ variables:
 # Basic job anchors
 .job_test: &job_test
   <<: *before_script_python_dependencies
-  <<: *tag_docker
   <<: *image_docker
   <<: *cache_python
 
 .job_build: &job_build
   <<: *before_script_python_dependencies
-  <<: *tag_docker
   <<: *image_docker
   <<: *cache_python
 
 .job_deploy: &job_deploy
   <<: *before_script_prepare_deployment
-  <<: *tag_docker
   <<: *image_docker
   <<: *cache_python
 
