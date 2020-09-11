@@ -67,28 +67,22 @@ External software requirements are:
     based distros)
   - vcsh >= 1.20151229-1
 
-<details>
-  <summary>
-    <b>💡 Hint: Usage of <code>direnv</code> is strongly recommended</b>
-    (click to reveal)
-  </summary>
+??? note "Hint: Usage of <code>direnv</code> is strongly recommended (click to reveal)"
 
-  > [`direnv`][direnv] is not a required dependency but it is strongly
-  > recommended to use it.
-  >
-  > As many tools used by this repo required environment variables, we strongly
-  > recommend using [direnv][direnv] to automate loading of these environment
-  > variables.
-  >
-  > [`direnv`][direnv] is an extension for your shell. It augments existing shells with a new
-  > feature that can load and unload environment variables depending on the
-  > current directory.
-  >
-  > In other terms, if a script `.envrc` is present in a folder and allowed for
-  > `direnv`, it will automatically be executed when entering the folder. When
-  > leaving the folder any exported variables will be automatically unloaded.
+    [`direnv`][direnv] is not a required dependency but it is strongly
+    recommended to use it.
 
-</details>
+    As many tools used by this repo required environment variables, we strongly
+    recommend using [direnv][direnv] to automate loading of these environment
+    variables.
+
+    [`direnv`][direnv] is an extension for your shell. It augments existing shells with a new
+    feature that can load and unload environment variables depending on the
+    current directory.
+
+    In other terms, if a script `.envrc` is present in a folder and allowed for
+    `direnv`, it will automatically be executed when entering the folder. When
+    leaving the folder any exported variables will be automatically unloaded.
 
 This repos is structured to be cloned with [`vcsh`][vcsh], before continuing, to
 used it, you will need to clone the repo with the following command:
