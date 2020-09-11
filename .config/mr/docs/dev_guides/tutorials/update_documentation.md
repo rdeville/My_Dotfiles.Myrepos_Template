@@ -92,7 +92,7 @@ When writing your documentation, the theme used in this documentation will
 generate a right sidebar with the table of content of the current page, as shown
 in the image below:
 
-![Right Sidebar][mkdocs_material_right_sidebar]
+![!Right Sidebar][mkdocs_material_right_sidebar]
 
 This TOC sidebar is automatically generated based on the section depths of the
 markdown file.

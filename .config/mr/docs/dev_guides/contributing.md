@@ -29,10 +29,10 @@ For more information, you can check the following pages:
     guidelines to follow if you want to contribute, mainly git branch management
     of the repo.
   * Tutorials:
-     * [Add new feature][add_new_feature], tutorial to learn how to add and test
-      a new feature you may want to propose.
      * [Update documentation][update_documentation], tutorial to learn how to
       update this documentation.
+     * [Update CI][update_ci], tutorial to learn how to add and test
+      a new feature you may want to propose.
 
 ## Community
 
@@ -42,6 +42,6 @@ conduct][code_of_conduct].
 [issue_tracker]: https://framagit.org/rdeville.public/my_dotfiles/myrepo/-/issues
 [developers_guidelines]: developer_guidelines.md
 [syntax_guide]: syntax_guide.md
-[add_new_feature]: tutorials/add_new_feature.md
+[update_ci]: tutorials/update_ci.md
 [update_documentation]: tutorials/update_documentation.md
 [code_of_conduct]: ../about/code_of_conduct.md
