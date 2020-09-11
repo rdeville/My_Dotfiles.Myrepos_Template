@@ -201,7 +201,7 @@ build_dev:
     -  mkdocs build
   artifacts:
     paths:
-      - site/
+      - .config/mr/site/
 
 build_prod:
   <<: *stage_build
@@ -210,7 +210,7 @@ build_prod:
     -  mkdocs build
   artifacts:
     paths:
-      - site/
+      - .config/mr/site/
 
 # Jobs in deploy stage
 # -----------------------------------------------------------------------------
@@ -218,7 +218,7 @@ deploy_dev:
   <<: *stage_deploy
   <<: *job_deploy_dev
   script:
-    - rsync -avz site/ "${ONLINE_DEST}${CI_PROJECT_PATH}-${CI_PIPELINE_ID}"
+    - rsync -avz .config/mr/site/ "${ONLINE_DEST}${CI_PROJECT_PATH}-${CI_PIPELINE_ID}"
     - echo "Documentation is now accessible at :"
     - echo "https://docs-dev.romaindeville.fr/${CI_PROJECT_PATH}-${CI_PIPELINE_ID}"
 
@@ -226,6 +226,6 @@ deploy_master:
   <<: *stage_deploy
   <<: *job_deploy_prod
   script:
-    - rsync -avz site/ "${ONLINE_DEST}${CI_PROJECT_PATH}"
+    - rsync -avz .config/mr/site/ "${ONLINE_DEST}${CI_PROJECT_PATH}"
     - echo "Documentation is now accessible at :"
     - echo "https://docs-dev.romaindeville.fr/${CI_PROJECT_PATH}-${CI_PIPELINE_ID}"
