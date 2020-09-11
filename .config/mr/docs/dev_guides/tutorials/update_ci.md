@@ -477,10 +477,10 @@ This CI manage two different kind of pipeline:
 [gitlab_ci_config_documentation]: https://docs.gitlab.com/ee/ci/yaml/
 [yaml_anchor]: https://yaml.org/spec/1.2/spec.html#id2765878
 [gitlab_ci_yaml_anchor]: https://docs.gitlab.com/ee/ci/yaml/#anchors
-[gitlab_update_ci_path]: /assets/img/gitlab_update_ci_path.png
+[gitlab_update_ci_path]: ../../assets/img/gitlab_update_ci_path.png
 [pyproject_file]: https://framagit.org/rdeville.public/my_dotfiles/myrepo/.config/mr/pyproject.toml
 [public_server_key]: #the-public-ssh-key-of-your-server
 [your_private_ssh_key]: #your-private-ssh-key
-[add_ci_variable]: /assets/img/ci_variable.png
-[add_single_ci_variable]: /assets/img/single_ci_variable.png
-[updated_variable_list]: /assets/img/update_ci_variable_list.png
+[add_ci_variable]: ../../assets/img/ci_variable.png
+[add_single_ci_variable]: ../../assets/img/single_ci_variable.png
+[updated_variable_list]: ../../assets/img/update_ci_variable_list.png

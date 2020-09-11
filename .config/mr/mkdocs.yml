@@ -6,21 +6,21 @@
 
 # Website Information
 # ---------------------------------------------------------------------------
-site_name: MyRepo Template
+site_name: MyRepos Template
 site_description: >-
   Template to initialize myrepos (https//myrepos.branchable.com) configuration
   per repos and per hosts
-site_url: https://docs.romaindeville.fr/dotfiles/config/mr
+site_url: https://docs.romaindeville.fr/my_dotfiles/myrepos
 
 # Repository Information
 # ---------------------------------------------------------------------------
 repo_name: Framagit
-repo_url: https://framagit.org/rdeville.public/my_dotfiles/myrepo
-edit_uri: rdeville.public/my_dotfiles/myrepo/edit/develop/.docs/config/mr/docs
+repo_url: https://framagit.org/rdeville.public/my_dotfiles/myrepos
+edit_uri: rdeville.public/my_dotfiles/myrepos/edit/develop/.docs/config/mr/docs
 extra:
   social:
     - icon: fontawesome/brands/gitlab
-      link: https://framagit.org/rdeville.public/my_dotfiles/myrepo
+      link: https://framagit.org/rdeville.public/my_dotfiles/myrepos
 
 # This setting controls the style used for linking to pages within the
 # documentation.

@@ -2,7 +2,7 @@
   <!-- Project Title -->
   <a href="https://framagit.org.rdeville.public/my_dotfiles/myrepo">
     <img src="assets/img/myrepo_logo.svg" width="100px">
-    <h1>MyRepo Template</h1>
+    <h1>MyRepos Template</h1>
   </a>
 
   <a href="https://opensource.org/licenses/MIT">
@@ -23,7 +23,7 @@ deployment configuration.
 <div align="center" style="text-align: center;">
 <b><i>
   SEE
-  <a href="/usage/keep_your_configuration.html">KEEP YOUR OWN CONFIGURATION</a>
+  <a href="usage/keep_your_configuration.html">KEEP YOUR OWN CONFIGURATION</a>
   SECTION TO STORE YOUR OWN CONFIGURATION.
 </i></b>
 </div>
