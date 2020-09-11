@@ -18,10 +18,10 @@ checkout  =
   {%- endif %}
 pull      =
   echo '\e[0;32m[INFO] Pull {{ repo_name }} from {{ repo_domain }}\e[0m';
-  vcsh {{ repo_name }} pull --all;
+  vcsh {{ repo_name }} pull origin $(git branch --show-current) --all;
 update    =
   echo '\e[0;32m[INFO] Pull {{ repo_name }} from {{ repo_domain }}\e[0m';
-  vcsh {{ repo_name }} pull --all;
+  vcsh {{ repo_name }} pull origin $(git branch --show-current) --all;
 upstream  =
   echo '\e[0;32m[INFO] Setting upstream of {{ repo_name }} to origin\e[0m';
   vcsh {{ repo_name }} branch --set-upstream-to=origin/$(vcsh {{ repo_name }} branch --show-current) $(vcsh {{ repo_name }} branch --show-current);
