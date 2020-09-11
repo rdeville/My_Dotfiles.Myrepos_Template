@@ -138,6 +138,6 @@ For more information, please refer to:
 
 
 [setup_myrepos]: ../../usage/setup_myrepos_configuration.md
-[mkdocs_material_right_sidebar]: /assets/img/mkdocs_material_right_sidebar_toc.png
+[mkdocs_material_right_sidebar]: ../../assets/img/mkdocs_material_right_sidebar_toc.png
 [mkdocs]: https://www.mkdocs.org/
 [mkdocs_material]: https://squidfunk.github.io/mkdocs-material/getting-started/

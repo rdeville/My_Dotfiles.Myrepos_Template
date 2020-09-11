@@ -79,4 +79,4 @@ subfolder of your `$HOME`, including `vcsh` dotfiles.
 [vcsh_repo_url]: https://github.com/RichiH/vcsh
 [myrepo_template_url]: https://framagit.org/rdeville.public/my_dotfiles/myrepo
 [myrepos_doc_url]: https://myrepos.branchable.com/
-[keep_your_configuration]: /usage/keep_your_configuration.html
+[keep_your_configuration]: ../usage/keep_your_configuration.html
