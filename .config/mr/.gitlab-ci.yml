@@ -51,6 +51,7 @@ variables:
     - echo $CI_PROJECT_PATH
     - echo $CI_PROJECT_NAMESPACE
     - echo $CI_PROJECT_ROOT_NAMESPACE
+    - echo ${CI_PROJECT_ROOT_NAMESPACE/CI_PROJECT_ROOT_NAMESPACE/}
 
 .before_script_prepare_deployment: &before_script_prepare_deployment
   before_script:
