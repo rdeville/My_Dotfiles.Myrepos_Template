@@ -208,7 +208,10 @@ class Host(Repo):
 
         values.append(("", ""))
         result_arrays = checkboxlist_dialog(
-            title=title, text=text, values=values, style=style,
+            title=title,
+            text=text,
+            values=values,
+            style=style,
         ).run()
 
         if "" in result_arrays:
