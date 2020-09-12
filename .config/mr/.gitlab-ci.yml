@@ -28,10 +28,6 @@ variables:
 # -----------------------------------------------------------------------------
 .before_script_python_dependencies: &before_script_python_dependencies
   before_script:
-    - echo $CI_PROJECT_PATH
-    - echo $CI_PROJECT_NAMESPACE
-    - echo $CI_PROJECT_ROOT_NAMESPACE
-    - echo ${CI_PROJECT_PATH/${CI_PROJECT_ROOT_NAMESPACE}\//}
     # Add python dependencies
     - apk update
     # Install base package
@@ -222,7 +218,9 @@ deploy_dev:
   <<: *stage_deploy
   <<: *job_deploy_dev
   script:
-    - rsync -avz site/ "${ONLINE_DEST}tmp/${CI_PROJECT_PATH}-${CI_PIPELINE_ID}"
+    - export CI_PROJECT_SUBNAMESPACE="${CI_PROJECT_PATH/${CI_PROJECT_ROOT_NAMESPACE}\//}"
+    - echo $CI_PROJECT_SUBNAMESPACE
+    - rsync -avz site/ "${ONLINE_DEST}${CI_PROJECT_ROOT_NAMESPACE}/tmp/${CI_PROJECT_SUBNAMESPACE}-${CI_PIPELINE_ID}"
 
 deploy_master:
   <<: *stage_deploy
