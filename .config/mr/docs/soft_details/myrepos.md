@@ -126,11 +126,11 @@ git and [vcsh]
     ```yaml
     repo:
       vcsh:
-        - name: myrepo
-          desc: MyRepo main dotfiles configurations
+        - name: myrepos
+          desc: MyRepos main dotfiles configurations
           remote:
-            https: https://framagit.org/rdeville.private/my_dotfiles/myrepo.git
-            ssh: git@framagit.org:rdeville.private/my_dotfiles/myrepo.git
+            https: https://framagit.org/rdeville.private/my_dotfiles/myrepos.git
+            ssh: git@framagit.org:rdeville.private/my_dotfiles/myrepos.git
           command:
             post_clone:
               - git flow init -d
@@ -139,39 +139,39 @@ git and [vcsh]
     Content of the outputed myrepo configuration:
     ```toml
 
-    [${HOME}/.config/vcsh/repo.d/myrepo.git]
+    [${HOME}/.config/vcsh/repo.d/myrepos.git]
     checkout  =
-      echo '\e[0;32m[INFO] Clone myrepo from framagit.org\e[0m'
-      vcsh clone git@framagit.org:rdeville.private/my_dotfiles/myrepo.git myrepo
+      echo '\e[0;32m[INFO] Clone myrepos from framagit.org\e[0m'
+      vcsh clone git@framagit.org:rdeville.private/my_dotfiles/myrepos.git myrepos
       echo '\e[0;32m[INFO]    Set upstream push\e[0m'
-      vcsh myrepo push -u origin master;
+      vcsh myrepos push -u origin master;
       echo '\e[0;32m[INFO]    Pull all remote branch\e[0m'
-      vcsh myrepo pull --all;
-      echo 'git flow init -d; exit' |  vcsh myrepo
+      vcsh myrepos pull --all;
+      echo 'git flow init -d; exit' |  vcsh myrepos
     pull      =
-      echo '\e[0;32m[INFO] Pull myrepo from framagit.org\e[0m';
-      vcsh myrepo pull origin $(git branch --show-current) --all;
+      echo '\e[0;32m[INFO] Pull myrepos from framagit.org\e[0m';
+      vcsh myrepos pull origin $(git branch --show-current) --all;
     update    =
-      echo '\e[0;32m[INFO] Pull myrepo from framagit.org\e[0m';
-      vcsh myrepo pull origin $(git branch --show-current) --all;
+      echo '\e[0;32m[INFO] Pull myrepos from framagit.org\e[0m';
+      vcsh myrepos pull origin $(git branch --show-current) --all;
     upstream  =
-      echo '\e[0;32m[INFO] Setting upstream of myrepo to origin\e[0m';
-      vcsh myrepo branch --set-upstream-to=origin/$(vcsh myrepo branch --show-current) $(vcsh myrepo branch --show-current);
+      echo '\e[0;32m[INFO] Setting upstream of myrepos to origin\e[0m';
+      vcsh myrepos branch --set-upstream-to=origin/$(vcsh myrepos branch --show-current) $(vcsh myrepos branch --show-current);
     push      =
-      echo '\e[0;32m[INFO] Push all myrepo to framagit.org\e[0m';
-      vcsh myrepo push --all;
-      echo '\e[0;32m[INFO] Push tags myrepo to framagit.org\e[0m';
-      vcsh myrepo push --tags;
+      echo '\e[0;32m[INFO] Push all myrepos to framagit.org\e[0m';
+      vcsh myrepos push --all;
+      echo '\e[0;32m[INFO] Push tags myrepos to framagit.org\e[0m';
+      vcsh myrepos push --tags;
     remote    =
-      vcsh myrepo remote -v show;
+      vcsh myrepos remote -v show;
     branch    =
-      vcsh myrepo branch -a;
+      vcsh myrepos branch -a;
     delete    =
-      echo '\e[0;31m[WARNING] Will delete \e[1;31mmyrepo.\e[0m';
+      echo '\e[0;31m[WARNING] Will delete \e[1;31mmyrepos.\e[0m';
       echo 'Press \e[0;31mEnter\e[0m to continue or \e[0;32mCtrl-D\e[0m to abort';
       read yn;
-      echo '\e[0;31mDelete \e[1;31mmyrepo\e[0;31m.\e[0m';
-      vcsh delete myrepo;
+      echo '\e[0;31mDelete \e[1;31mmyrepos\e[0;31m.\e[0m';
+      vcsh delete myrepos;
     ```
 
 Assuming the YAML configuration file is `persoL/config.yaml` relative to the
@@ -202,7 +202,7 @@ configured in the previous section:
 
 ```toml
 # VCSH version controlled dotfiles
-include = cat ${HOME}/.config/mr/perso/myrepo.vcsh
+include = cat ${HOME}/.config/mr/perso/myrepos.vcsh
 # Git version controlled repo
 include = cat ${HOME}/.config/mr/perso/st_dev.git
 ```
