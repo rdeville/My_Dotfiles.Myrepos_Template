@@ -28,6 +28,10 @@ variables:
 # -----------------------------------------------------------------------------
 .before_script_python_dependencies: &before_script_python_dependencies
   before_script:
+    - echo $CI_PROJECT_PATH
+    - echo $CI_PROJECT_NAMESPACE
+    - echo $CI_PROJECT_ROOT_NAMESPACE
+    - echo ${CI_PROJECT_PATH/CI_PROJECT_ROOT_NAMESPACE/}
     # Add python dependencies
     - apk update
     # Install base package
@@ -48,10 +52,6 @@ variables:
     - pip3 install -r requirements.txt
     # Install development requirements
     - pip3 install -r requirements.dev.txt
-    - echo $CI_PROJECT_PATH
-    - echo $CI_PROJECT_NAMESPACE
-    - echo $CI_PROJECT_ROOT_NAMESPACE
-    - echo ${CI_PROJECT_ROOT_NAMESPACE/CI_PROJECT_ROOT_NAMESPACE/}
 
 .before_script_prepare_deployment: &before_script_prepare_deployment
   before_script:
