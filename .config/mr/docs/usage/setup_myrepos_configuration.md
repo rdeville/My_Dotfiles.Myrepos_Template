@@ -36,13 +36,13 @@ repos:
   # List of repos to be clone using vcsh
   vcsh:
       # Name of the repo for vcsh
-    - name: myrepo
+    - name: myrepos
       # Description of the repo
       desc: MyRepos dotfiles configuration
       # HTTPS and/or  SSH remote URL
       remote:
-        https: https://framagit.org/rdeville.public/my_dotfiles/myrepo.git
-        ssh: git@framagit.org:rdeville.public/my_dotfiles/myrepo.git
+        https: https://framagit.org/rdeville.public/my_dotfiles/myrepos.git
+        ssh: git@framagit.org:rdeville.public/my_dotfiles/myrepos.git
       # Command to be run before or after the clone command
       command:
         # List of commands to be run before the clone of the repo

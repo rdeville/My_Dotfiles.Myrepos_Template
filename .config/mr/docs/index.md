@@ -1,6 +1,6 @@
 <div align="center" style="text-align: center;">
   <!-- Project Title -->
-  <a href="https://framagit.org.rdeville.public/my_dotfiles/myrepo">
+  <a href="https://framagit.org.rdeville.public/my_dotfiles/myrepos">
     <img src="assets/img/myrepo_logo.svg" width="100px">
     <h1>MyRepos Template</h1>
   </a>
@@ -8,8 +8,8 @@
   <a href="https://opensource.org/licenses/MIT">
     <img alt="License" src="https://img.shields.io/badge/Licence-MIT-informational?style=flat-square&logo=appveyor">
   </a>
-  <a href="https://framagit.org/rdeville.public/my_dotfiles/myrepo/commits/master">
-    <img alt="Build Status" src="https://framagit.org/rdeville.public/my_dotfiles/myrepo/badges/master/pipeline.svg?style=flat-square&logo=appveyor">
+  <a href="https://framagit.org/rdeville.public/my_dotfiles/myrepos/commits/master">
+    <img alt="Build Status" src="https://framagit.org/rdeville.public/my_dotfiles/myrepos/badges/master/pipeline.svg?style=flat-square&logo=appveyor">
   </a>
 </div>
 
@@ -89,9 +89,9 @@ used it, you will need to clone the repo with the following command:
 
 ```bash
 # Clone with HTTPS
-vcsh clone https://framagit.org/rdeville.public/my_dotfiles/myrepo.git myrepo
+vcsh clone https://framagit.org/rdeville.public/my_dotfiles/myrepos.git myrepos
 # Clone with SSH
-vcsh clone git@framagit.org:rdeville.public/my_dotfiles/myrepo.git myrepo
+vcsh clone git@framagit.org:rdeville.public/my_dotfiles/myrepos.git myrepos
 ```
 
 Then, you will need to install python required dependencies to be able to use
@@ -109,7 +109,7 @@ pip3 install -r requirements.txt
 ```
 
 [myrepos]: https://myrepos.branchable.com/
-[myrepo_repo_url]: https://framagit.org/rdeville.public/my_dotfiles/myrepo
+[myrepo_repo_url]: https://framagit.org/rdeville.public/my_dotfiles/myrepos
 [vcsh]: https://github.com/RichiH/vcsh
 [direnv]: https://direnv.net
 [checkbox_list_screenshot]: assets/img/checkbox_list.png
