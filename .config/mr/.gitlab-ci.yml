@@ -218,7 +218,7 @@ deploy_dev:
   <<: *stage_deploy
   <<: *job_deploy_dev
   script:
-    - rsync -avz site/ "${ONLINE_DEST}${CI_PROJECT_PATH}-${CI_PIPELINE_ID}"
+    - rsync -avz site/ "${ONLINE_DEST}tmp/${CI_PROJECT_PATH}-${CI_PIPELINE_ID}"
 
 deploy_master:
   <<: *stage_deploy
