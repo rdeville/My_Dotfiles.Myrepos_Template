@@ -16,4 +16,5 @@ mkdocs-mermaid2-plugin
 mkdocs-git-revision-date-localized-plugin
 mkdocstrings
 markdown-include
+mkdocs-markdownextradata-plugin
 git+https://github.com/g-provost/lightgallery-markdown
