@@ -15,7 +15,7 @@ site_name: my_dotfiles/myrepos
 # Website architecture
 # ---------------------------------------------------------------------------
 nav:
-  - Home: index.md
+  - Description: index.md
   - Usage:
     - VCSH: usage/vcsh.md
     - MyRepos: usage/myrepos.md
