@@ -213,11 +213,11 @@ trigger_main_doc_dev:
   <<: *job_deploy_prod
   script:
     - echo "Triggering rebuild of main documentation on develop branch"
-    - curl -X POST -F token=${TRIGGER_TOKEN} -F ref=branch https://framagit.org/api/v4/projects/65985/trigger/pipeline
+    - curl -X POST -F token=${TRIGGER_TOKEN} -F ref=branch https://framagit.org/api/v4/projects/${TRIGGER_PROJECT_ID}/trigger/pipeline
 
 trigger_main_doc_master:
   <<: *stage_deploy
   <<: *job_deploy_prod
   script:
     - echo "Triggering rebuild of main documentation on master branch"
-    - curl -X POST -F token=${TRIGGER_TOKEN} -F ref=master https://framagit.org/api/v4/projects/65985/trigger/pipeline
+    - curl -X POST -F token=${TRIGGER_TOKEN} -F ref=master https://framagit.org/api/v4/projects/${TRIGGER_PROJECT_ID}/trigger/pipeline
