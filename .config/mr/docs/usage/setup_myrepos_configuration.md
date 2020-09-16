@@ -41,12 +41,12 @@ repos:
       desc: MyRepos dotfiles configuration
       # HTTPS and/or  SSH remote URL
       remote:
-        https: https://framagit.org/rdeville.public/my_dotfiles/myrepos.git
-        ssh: git@framagit.org:rdeville.public/my_dotfiles/myrepos.git
+        https: {{ git_platform.url }}{{ myrepos.namespace }}myrepos.git
+        ssh: git@{{ git_platform.domain }}:{{ myrepos.namespace }}myrepos.git
       # Command to be run before or after the clone command
       command:
         # List of commands to be run before the clone of the repo
-        pre_clone:.
+        pre_clone:
           - echo "Pre Clone command"
         # List of commands to be run after the clone of the repo
         post_clone:
@@ -62,8 +62,8 @@ repos:
       desc: Development fork st suckless terminal
       # HTTPS and/or  SSH remote URL
       remote:
-        https: https://framagit.org/rdeville.private/my_forked_programs/st.git
-        ssh: git@framagit.org:rdeville.private/my_forked_programs/st.git
+        https: {{ git_platform.url }}rdeville.private/my_forked_programs/st.git
+        ssh: git@{{ git_platform.domain }}:rdeville.private/my_forked_programs/st.git
       # Command to be run before or after the clone command
       command:
         # List of commands to be run before the clone of the repo

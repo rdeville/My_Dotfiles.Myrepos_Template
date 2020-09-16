@@ -1,4 +1,4 @@
-# Keep your own configuration
+z Keep your own configuration
 
 ## Initialize vcsh repo
 

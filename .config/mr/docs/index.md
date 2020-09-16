@@ -1,21 +1,14 @@
 <div align="center" style="text-align: center;">
   <!-- Project Title -->
-  <a href="https://framagit.org.rdeville.public/my_dotfiles/myrepos">
-    <img src="assets/img/myrepo_logo.svg" width="100px">
+  <a href="{{ git_platform.url }}{{ myrepos.namespace }}{{ myrepos.name }}">
+    <img src="assets/img/logo.svg" width="100px">
     <h1>MyRepos Template</h1>
-  </a>
-
-  <a href="https://opensource.org/licenses/MIT">
-    <img alt="License" src="https://img.shields.io/badge/Licence-MIT-informational?style=flat-square&logo=appveyor">
-  </a>
-  <a href="https://framagit.org/rdeville.public/my_dotfiles/myrepos/commits/master">
-    <img alt="Build Status" src="https://framagit.org/rdeville.public/my_dotfiles/myrepos/badges/master/pipeline.svg?style=flat-square&logo=appveyor">
   </a>
 </div>
 
 --------------------------------------------------------------------------------
 
-Main repo on [ Framagit][myrepo_repo_url] is just here to propose a
+Main repo on [{{ git_platform.name }}][myrepo_repo_url] is just here to propose a
 scaffolding repo to setup [myrepos][myrepos]. Its aims is not to store any
 deployment configuration.
 <br>
@@ -89,9 +82,9 @@ used it, you will need to clone the repo with the following command:
 
 ```bash
 # Clone with HTTPS
-vcsh clone https://framagit.org/rdeville.public/my_dotfiles/myrepos.git myrepos
+vcsh clone {{ git_platform.url }}{{ myrepos.namespace }}{{ myrepos.name }}.git
 # Clone with SSH
-vcsh clone git@framagit.org:rdeville.public/my_dotfiles/myrepos.git myrepos
+vcsh clone git@{{ git_platform.domain }}:{{ myrepos.namespace }}{{ myrepos.name }}.git"
 ```
 
 Then, you will need to install python required dependencies to be able to use
@@ -109,7 +102,7 @@ pip3 install -r requirements.txt
 ```
 
 [myrepos]: https://myrepos.branchable.com/
-[myrepo_repo_url]: https://framagit.org/rdeville.public/my_dotfiles/myrepos
+[myrepo_repo_url]: {{ git_platform.url }}{{ myrepos.namespace }}{{ myrepos.name }}
 [vcsh]: https://github.com/RichiH/vcsh
 [direnv]: https://direnv.net
 [checkbox_list_screenshot]: assets/img/checkbox_list.png
