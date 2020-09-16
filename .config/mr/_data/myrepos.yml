@@ -1,0 +1,6 @@
+---
+# Extra Data Information & Customization
+# ---------------------------------------------------------------------------
+# These variables are accessible under {{ repo.<variable_name> }}
+namespace: "rdeville.public/my_dotfiles/"
+name: "myrepos"
