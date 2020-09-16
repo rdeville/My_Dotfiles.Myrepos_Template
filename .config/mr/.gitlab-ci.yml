@@ -69,6 +69,10 @@ variables:
       - /bugfix-*/
       - develop
       - merge_requests
+.only_dev: &only_trigger_dev
+  only:
+    refs:
+      - develop
 .only_prod: &only_prod
   only:
     refs:
@@ -146,7 +150,7 @@ variables:
 
 .job_deploy_dev: &job_deploy_dev
   <<: *job_deploy
-  <<: *only_dev
+  <<: *only_trigger_dev
 
 # Prod jobs done only on master
 .job_test_prod: &job_test_prod
