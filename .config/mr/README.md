@@ -1,7 +1,7 @@
 <div align="center" style="text-align: center;">
   <!-- Project Title -->
   <a href="https://framagit.org.rdeville.public/my_dotfiles/myrepos">
-    <img src="docs/assets/img/myrepo_logo.svg" width="100px">
+    <img src="docs/assets/img/logo.svg" width="100px">
     <h1>MyRepos Template</h1>
   </a>
 
@@ -261,16 +261,15 @@ selected repos.
 
 # Documentation
 
-A more details documentation, with tutorials, is available at [MyRepos Online
-Documentation][myrepo_online_documentation]. In this documentation is also
-provided methods to version your configuration files.
+[Online Documentation][repo_online_doc] provide a more details documentation
+with tutorials. In this documentation is also provided methods to version your
+configuration files.
 
 **IMPORTANT !!**
 
-If, for any reason, the link to the [MyRepos Online
-Documentation][myrepo_online_documentation] is broken, you can generate the
-documention locally on your computer (since the documentation is jointly stored
-within the repository).
+If, for any reason, the link to the [Online Documentation][repo_online_doc] is
+broken, you can generate the documention locally on your computer (since the
+documentation is jointly stored within the repository).
 
 Assuming you have already installed required binaries and cloned the repo as
 described in [Software Requirements](#software-requirements), first got to the
@@ -278,7 +277,7 @@ documentation location:
 
 ```bash
 # Go to the documentation location
-cd ~/.docs/config/mr/
+cd ~/.config/mr/
 ```
 
 Then, setup a temporary python virtual environment and activate it:
@@ -302,7 +301,7 @@ the usage of the following command (some logs will be outputed to stdout):
 
 ```bash
 # Assuming you are in ~/.docs/config/mr
-mkdocs serve
+mkdocs serve -f mkdocs.local.yml
 ```
 
 You can now browse the full documentation by visiting
@@ -315,5 +314,5 @@ You can now browse the full documentation by visiting
 [direnv]: https://direnv.net
 [mkdocs]: https://www.mkdocs.org/
 [localhost]: http://localhost:8000
-[myrepo_online_documentation]: https://docs.romaindeville.fr/dotfiles/config/mr
+[repo_online_doc]: https://docs.romaindeville.fr/my_dotfiles/myrepos/
 [checkbox_list_screenshot]: docs/assets/img/checkbox_list.png
