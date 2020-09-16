@@ -37,7 +37,7 @@ is as simple as:
 
 ```bash
 # First clone this current repository
-vcsh clone https://framagit.org/rdeville.public/my_dotfiles/myrepo.git myrepo
+vcsh clone {{ git_platform.url }}{{ myrepos.namespace }}{{ myrepos.name }}.git {{ myrepos.name }}
 # Seconf clone you own configuration
 vcsh clone git@mygit.tld:namespace/myrepo_config.git
 # Assuming that your personal configuratio is in ${HOME}/.config/mr/perso/
@@ -63,7 +63,7 @@ configuration, commands will simply be:
 ```bash
 # Assuming you are in your $HOME folder
 # First clone this current repository
-vcsh clone https://framagit.org/rdeville.public/my_dotfiles/myrepo.git myrepo
+vcsh clone {{ git_platform.url }}{{ myrepos.namespace }}{{ myrepos.name }}.git {{ myrepos.name }}
 # Seconf clone you own configuration
 vcsh clone git@mygit.tld:namespace/myrepo_config.git myrepo_perso
 # Finally, let us gather all your vcsh and git repos at once
@@ -77,6 +77,6 @@ subfolder of your `$HOME`, including `vcsh` dotfiles.
 
 
 [vcsh_repo_url]: https://github.com/RichiH/vcsh
-[myrepo_template_url]: https://framagit.org/rdeville.public/my_dotfiles/myrepo
+[myrepo_template_url]: {{ git_platform.url }}{{ myrepos.namespace }}{{ myrepos.name }}
 [myrepos_doc_url]: https://myrepos.branchable.com/
 [keep_your_configuration]: ../usage/keep_your_configuration.md

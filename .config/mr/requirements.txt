@@ -27,25 +27,26 @@ lunr[languages]==0.5.8    # via mkdocs
 markdown-include==0.6.0   # via -r ./requirements.in
 markdown==3.2.2           # via lightgallery, markdown-include, mkdocs, mkdocs-material, pymdown-extensions
 markupsafe==1.1.1         # via jinja2
-mkdocs-git-revision-date-localized-plugin==0.7  # via -r ./requirements.in
+mkdocs-git-revision-date-localized-plugin==0.7.1  # via -r ./requirements.in
+git+https://github.com/rdeville/mkdocs-markdownextradata-plugin  # via -r ./requirements.in
 mkdocs-material-extensions==1.0  # via mkdocs-material
 mkdocs-material==5.5.12   # via -r ./requirements.in, mkdocs-material-extensions, mkdocs-mermaid2-plugin
 mkdocs-mermaid2-plugin==0.4.2  # via -r ./requirements.in
 mkdocs-minify-plugin==0.3.0  # via -r ./requirements.in
 mkdocs-monorepo-plugin==0.4.10  # via -r ./requirements.in
-mkdocs==1.1.2             # via -r ./requirements.in, mkdocs-git-revision-date-localized-plugin, mkdocs-material, mkdocs-mermaid2-plugin, mkdocs-minify-plugin, mkdocs-monorepo-plugin, mkdocstrings
-mkdocstrings==0.13.1      # via -r ./requirements.in
+mkdocs==1.1.2             # via -r ./requirements.in, mkdocs-git-revision-date-localized-plugin, mkdocs-markdownextradata-plugin, mkdocs-material, mkdocs-mermaid2-plugin, mkdocs-minify-plugin, mkdocs-monorepo-plugin, mkdocstrings
+mkdocstrings==0.13.2      # via -r ./requirements.in
 nltk==3.5                 # via lunr
 pbr==5.5.0                # via git-url-parse
 pip-tools==5.3.1          # via -r ./requirements.in
 prompt-toolkit==3.0.7     # via -r ./requirements.in
-pygments==2.6.1           # via mkdocs-material
+pygments==2.7.0           # via mkdocs-material
 pykwalify==1.7.0          # via -r ./requirements.in
 pymdown-extensions==8.0   # via mkdocs-material, mkdocs-mermaid2-plugin, mkdocstrings
 python-dateutil==2.8.1    # via pykwalify
 pytkdocs==0.7.0           # via mkdocstrings
 pytz==2020.1              # via babel
-pyyaml==5.3.1             # via mkdocs, mkdocs-mermaid2-plugin, pykwalify
+pyyaml==5.3.1             # via mkdocs, mkdocs-markdownextradata-plugin, mkdocs-mermaid2-plugin, pykwalify
 regex==2020.7.14          # via nltk
 requests==2.24.0          # via mkdocs-mermaid2-plugin
 six==1.15.0               # via jsbeautifier, livereload, lunr, pip-tools, python-dateutil
@@ -53,7 +54,7 @@ smmap==3.0.4              # via gitdb
 soupsieve==2.0.1          # via beautifulsoup4
 termcolor==1.1.0          # via mkdocs-mermaid2-plugin
 tornado==6.0.4            # via livereload, mkdocs
-tqdm==4.48.2              # via nltk
+tqdm==4.49.0              # via nltk
 urllib3==1.25.10          # via requests
 wcwidth==0.2.5            # via prompt-toolkit
 wheel==0.35.1             # via -r ./requirements.in

@@ -50,12 +50,12 @@ to setup configuration. There is two set of configuration files:
 
 ### Per repos configuration
 
-From the YAML file provided as input of the `main.py` script (as described in
-[Home][home]), the script will create a `repos` directory next to the YAML file
-in which it will store the `mr` action for each repos describe in the YAML file.
+From the YAML file provided as input of the `main.py` script, the script will
+create a `repos` directory next to the YAML file in which it will store the `mr`
+action for each repos describe in the YAML file.
 
 Below is an example of such file for version control repositories managed with
-git and [vcsh]
+git and [vcsh][vcsh].
 
 
 ??? info "Exemple of git repo configuration"
@@ -69,8 +69,8 @@ git and [vcsh]
           path: ${HOME}/.local/src/st
           desc: Production fork st suckless terminal
           remote:
-            https: https://framagit.org/rdeville.private/my_forked_programs/st.git
-            ssh: git@framagit.org:rdeville.private/my_forked_programs/st.git
+            https: {{ git_platform.url }}rdeville.public/my_forked_programs/st.git
+            ssh: git@{{ git_platform.domain }}:rdeville.public/my_forked_programs/st.git
           command:
             post_clone:
               - git flow init -d
@@ -82,8 +82,8 @@ git and [vcsh]
     ```toml
     [${HOME}/.local/src/st]
     checkout  =
-      echo '\e[0;32m[INFO] Clone st_prod from framagit.org\e[0m'
-      git clone git@framagit.org:rdeville.private/my_forked_programs/st.git ${HOME}/.local/src/st
+      echo '\e[0;32m[INFO] Clone st_prod from {{ git_platform.domain }}\e[0m'
+      git clone git@{{ git_platform.domain }}:rdeville.public/my_forked_programs/st.git ${HOME}/.local/src/st
       cd ${HOME}/.local/src/st
       echo '\e[0;32m[INFO]    Set upstream push\e[0m'
       git push -u origin master;
@@ -93,15 +93,15 @@ git and [vcsh]
       make
       sudo make install
     pull      =
-      echo '\e[0;32m[INFO] Pull st_prod from framagit.org\e[0m';
+      echo '\e[0;32m[INFO] Pull st_prod from {{ git_platform.domain }}\e[0m';
       git pull origin $(git branch --show-current) --all;
     update    =
-      echo '\e[0;32m[INFO] Pull st_prod from framagit.org\e[0m';
+      echo '\e[0;32m[INFO] Pull st_prod from {{ git_platform.domain }}\e[0m';
       git pull origin $(git branch --show-current) --all;
     push      =
-      echo '\e[0;32m[INFO] Push all st_prod to framagit.org\e[0m';
+      echo '\e[0;32m[INFO] Push all st_prod to {{ git_platform.domain }}\e[0m';
       git push --all;
-      echo '\e[0;32m[INFO] Push tags st_prod to framagit.org\e[0m';
+      echo '\e[0;32m[INFO] Push tags st_prod to {{ git_platform.domain }}\e[0m';
       git push --tags;
     upstream  =
       echo '\e[0;32m[INFO] Setting upstream of st_prod to origin\e[0m';
@@ -129,8 +129,8 @@ git and [vcsh]
         - name: myrepos
           desc: MyRepos main dotfiles configurations
           remote:
-            https: https://framagit.org/rdeville.private/my_dotfiles/myrepos.git
-            ssh: git@framagit.org:rdeville.private/my_dotfiles/myrepos.git
+            https: {{ git_platform.url }}{{ myrepos.namespace }}{{ myrepos.name }}.git
+            ssh: git@{{ git_platform.domain }}:{{ myrepos.namespace }}{{ myrepos.name }}.git
           command:
             post_clone:
               - git flow init -d
@@ -141,26 +141,26 @@ git and [vcsh]
 
     [${HOME}/.config/vcsh/repo.d/myrepos.git]
     checkout  =
-      echo '\e[0;32m[INFO] Clone myrepos from framagit.org\e[0m'
-      vcsh clone git@framagit.org:rdeville.private/my_dotfiles/myrepos.git myrepos
+      echo '\e[0;32m[INFO] Clone myrepos from {{ git_platform.domain }}\e[0m'
+      vcsh clone git@{{ git_platform.domain }}:{{ myrepos.namespace }}{{ myrepos.name }}.git {{ myrepos.name }}
       echo '\e[0;32m[INFO]    Set upstream push\e[0m'
       vcsh myrepos push -u origin master;
       echo '\e[0;32m[INFO]    Pull all remote branch\e[0m'
       vcsh myrepos pull --all;
       echo 'git flow init -d; exit' |  vcsh myrepos
     pull      =
-      echo '\e[0;32m[INFO] Pull myrepos from framagit.org\e[0m';
+      echo '\e[0;32m[INFO] Pull myrepos from {{ git_platform.domain }}\e[0m';
       vcsh myrepos pull origin $(git branch --show-current) --all;
     update    =
-      echo '\e[0;32m[INFO] Pull myrepos from framagit.org\e[0m';
+      echo '\e[0;32m[INFO] Pull myrepos from {{ git_platform.domain }}\e[0m';
       vcsh myrepos pull origin $(git branch --show-current) --all;
     upstream  =
       echo '\e[0;32m[INFO] Setting upstream of myrepos to origin\e[0m';
       vcsh myrepos branch --set-upstream-to=origin/$(vcsh myrepos branch --show-current) $(vcsh myrepos branch --show-current);
     push      =
-      echo '\e[0;32m[INFO] Push all myrepos to framagit.org\e[0m';
+      echo '\e[0;32m[INFO] Push all myrepos to {{ git_platform.domain }}\e[0m';
       vcsh myrepos push --all;
-      echo '\e[0;32m[INFO] Push tags myrepos to framagit.org\e[0m';
+      echo '\e[0;32m[INFO] Push tags myrepos to {{ git_platform.domain }}\e[0m';
       vcsh myrepos push --tags;
     remote    =
       vcsh myrepos remote -v show;
@@ -174,8 +174,8 @@ git and [vcsh]
       vcsh delete myrepos;
     ```
 
-Assuming the YAML configuration file is `persoL/config.yaml` relative to the
-root of the repo, per repos configuration can be automatically generated with
+Assuming the YAML configuration file is `perso/config.yaml` relative to the
+`main.py` script, per repos configuration can be automatically generated with
 the following command:
 
 ```bash
@@ -191,8 +191,7 @@ Once per repos configuration files are generated, you will need to setup host
 configuration files. This file is included as described in `~/.mrconfig`. It
 should be located at `~/.config/mr/hosts/$(hostname).cfg`.
 
-From there, you have to possibility, which are describe in the [Home][home]
-page:
+From there, you have to possibility:
 
   * [Manually configure host][manual_host_config]
   * [Automatically configure host][auto_host_config]
@@ -216,7 +215,6 @@ include = cat ${HOME}/.config/mr/perso/*
 ```
 
 [myrepos_doc]: https://myrepos.branchable.com/
-[home]: ../index.md
 [vcsh]: https://github.com/RichiH/vcsh
 [manual_host_config]: ../usage/setup_myrepos_configuration.md#manually-configure-host
 [auto_host_config]: ../usage/setup_myrepos_configuration.md#automatically-configure-host
