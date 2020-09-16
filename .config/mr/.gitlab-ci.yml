@@ -51,23 +51,9 @@ variables:
 
 .before_script_prepare_deployment: &before_script_prepare_deployment
   before_script:
-    # Add rsync dependencies
+    # Add curl dependencies
     - apk update
-    - apk add --no-cache --update-cache rsync
-    # Ensure ssh configuration folder exists
-    - mkdir -p ~/.ssh
-    # Ensure permission on this folder are right
-    - chmod 700 ~/.ssh
-    # Trust the perso LIRIS website
-    - echo "$SSH_KNOWN_HOSTS" > ~/.ssh/known_hosts
-    # Ensure permission on the previously written file are right
-    - chmod 600 ~/.ssh/known_hosts
-    # Start the SSH agent
-    - eval $(ssh-agent -s)
-    # Add the private SSH key to be able to connect to the perso LIRIS website
-    - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
-    # Go to the main directory
-    - cd .config/mr
+    - apk add --no-cache --update-cache curl
 
 # Only anchors
 # -----------------------------------------------------------------------------
