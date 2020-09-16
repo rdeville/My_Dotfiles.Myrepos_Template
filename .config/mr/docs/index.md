@@ -8,6 +8,7 @@
 
 --------------------------------------------------------------------------------
 
+Main repo on [{{ git_platform.name }}][myrepo_repo_url] is just here to propose a
 scaffolding repo to setup [myrepos][myrepos]. Its aims is not to store any
 deployment configuration.
 <br>
@@ -101,7 +102,7 @@ pip3 install -r requirements.txt
 ```
 
 [myrepos]: https://myrepos.branchable.com/
-[myrepo_repo_url]: {{ myrepos.url }}
+[myrepo_repo_url]: {{ git_platform.url }}{{ myrepos.namespace }}{{ myrepos.name }}
 [vcsh]: https://github.com/RichiH/vcsh
 [direnv]: https://direnv.net
 [checkbox_list_screenshot]: assets/img/checkbox_list.png
