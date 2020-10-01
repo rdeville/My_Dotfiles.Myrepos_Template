@@ -1,5 +1,9 @@
 # Release notes
 
+## v1.1.4
+
+Add myrepo logo new path with their new path.
+
 ## v1.1.3
 
 Update mkdocs config for material 6.x. Mainly change value of key features in
