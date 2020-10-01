@@ -11,7 +11,7 @@ click==7.1.2              # via black
 distlib==0.3.1            # via virtualenv
 filelock==3.0.12          # via tox, virtualenv
 flake8==3.8.3             # via -r ./requirements.dev.in
-isort==5.5.2              # via pylint
+isort==5.5.4              # via pylint
 lazy-object-proxy==1.4.3  # via astroid
 mccabe==0.6.1             # via flake8, pylint
 mypy-extensions==0.4.3    # via black
@@ -23,7 +23,7 @@ pycodestyle==2.6.0        # via flake8
 pyflakes==2.2.0           # via flake8
 pylint==2.6.0             # via -r ./requirements.dev.in
 pyparsing==2.4.7          # via packaging
-regex==2020.7.14          # via black
+regex==2020.9.27          # via black
 shellcheck-py==0.7.1.1    # via -r ./requirements.dev.in
 six==1.15.0               # via astroid, packaging, tox, virtualenv
 toml==0.10.1              # via black, pylint, tox
