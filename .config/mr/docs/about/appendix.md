@@ -1,4 +1,4 @@
-# Appendinx
+# Appendix
 
 ## External Documentation
 
