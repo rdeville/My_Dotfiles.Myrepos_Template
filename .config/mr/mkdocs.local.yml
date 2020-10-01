@@ -113,7 +113,7 @@ plugins:
     # https://github.com/fralau/mkdocs_macros_plugin
     # Unleash the power of MkDocs with variables and macros
   - macros:
-      module_name: docs.theme.plugins.jinja_macros
+      module_name: _data/plugins/jinja_macros
       include_dir: docs
       include_yaml:
         - _data/vars.yaml
@@ -175,6 +175,9 @@ markdown_extensions:
   - pymdownx.emoji:
       emoji_index: !!python/name:materialx.emoji.twemoji
       emoji_generator: !!python/name:materialx.emoji.to_svg
+      options:
+        custom_icons:
+          - .icons
   - pymdownx.escapeall:
       hardbreak: True
       nbsp: True
@@ -211,16 +214,12 @@ extra:
       link: https://github.com/rdeville/
     - icon: fontawesome/brands/gitlab
       link: https://framagit.org/rdeville.public/
-  git_platform:
-    name: " Framagit"
-    domain: "framagit.org"
-    url: "https://framagit.org/"
-    user_profile: "rdeville"
-    main_repo: "https://framagit.org/rdeville.public"
   user:
     name: "Romain Deville"
     mail: "contact@romaindeville.fr"
-  docs: "https://docs.romaindeville.fr/"
+  docs_url: "https://docs.romaindeville.fr/"
+  style:
+    logo: '{: style="vertical-align:middle; height:25px;"}'
 
 # Website architecture
 # ---------------------------------------------------------------------------

@@ -1,5 +1,9 @@
 # Release notes
 
+## v1.1.2
+
+Move jinja_macros into _data and update mkdocs.yml accordingly.
+
 ## v1.1.1
 
 Update requirements.in and requirements.txt to use the new plugin used to use
