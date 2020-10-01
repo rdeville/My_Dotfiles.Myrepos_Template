@@ -110,11 +110,13 @@ plugins:
           setup_commands:
             - import sys
             - sys.path.append("./")
-    # https://github.com/rosscdh/mkdocs-markdownextradata-plugin
-    # A MkDocs plugin that injects the mkdocs.yml extra variables into the markdown template
-  - markdownextradata:
-      data:
-        - _data
+    # https://github.com/fralau/mkdocs_macros_plugin
+    # Unleash the power of MkDocs with variables and macros
+  - macros:
+      module_name: docs.theme.plugins.jinja_macros
+      include_dir: docs
+      include_yaml:
+        - _data/vars.yaml
 
 # Extensions
 # ---------------------------------------------------------------------------
