@@ -1,5 +1,12 @@
 # Release notes
 
+## v1.1.1
+
+Update requirements.in and requirements.txt to use the new plugin used to use
+jinja macro in mkdocs.
+
+Rename extra variable file from `_data/myrepos.yaml` to `_data/vars.yaml`.
+
 ## v1.1.0
 
 Huge rework of the documentation to be render locally and to be included
