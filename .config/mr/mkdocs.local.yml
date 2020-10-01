@@ -41,7 +41,7 @@ theme:
   # as flags and can be enabled by listing them in mkdocs.yml under
   # theme.features:
   features:
-    - instant
+    - navigation.instant
   # Setting colors palette (these are defined in docs/theme/css/colors.css
   palette:
     primary: drac-yellow
