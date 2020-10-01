@@ -1,5 +1,10 @@
 # Release notes
 
+## v1.1.3
+
+Update mkdocs config for material 6.x. Mainly change value of key features in
+mkdocs.yml
+
 ## v1.1.2
 
 Move jinja_macros into _data and update mkdocs.yml accordingly.
