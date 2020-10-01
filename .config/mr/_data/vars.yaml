@@ -5,3 +5,10 @@
 myrepos:
   namespace: "rdeville.public/my_dotfiles/"
   name: "myrepos"
+git_platform:
+  name: " Framagit"
+  domain: "framagit.org"
+  url: "https://framagit.org/"
+  ci_base_url: "https://gitlab-ci-token:CI_JOB_TOKEN@framagit.org/"
+  user_profile: "rdeville/"
+  main_namespace: "rdeville.public/"
