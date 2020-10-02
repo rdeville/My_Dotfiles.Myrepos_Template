@@ -1,5 +1,9 @@
 # Release notes
 
+## v1.1.5
+
+Remove useless section about direnv in detail balise in README.md
+
 ## v1.1.4
 
 Add myrepo logo new path with their new path.
