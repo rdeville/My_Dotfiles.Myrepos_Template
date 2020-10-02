@@ -1,5 +1,9 @@
 # Release notes
 
+## v1.1.6
+
+Add more generic CI build.
+
 ## v1.1.5
 
 Remove useless section about direnv in detail balise in README.md
